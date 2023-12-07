@@ -1,0 +1,9 @@
+<app-display [count]="count">
+  <h1>Counter app</h1>
+</app-display>
+<app-button (onChange)="handleChnage($event)"></app-button>
+
+<div>
+  <button (click)="handleClick()">click</button>
+  <span *ngIf="visible">Hello Angular</span>
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Todo } from '../share/todo.model';
 
 @Component({
   selector: 'app-todos',
@@ -7,18 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodosComponent implements OnInit {
   newText: string = '';
-  todos: {
-    done: boolean;
-    text: string;
-  }[];
-  date: string;
+  todos: Todo[];
+  today: Date = new Date();
 
   constructor() {
     this.todos = [
       { done: false, text: '운동하기' },
       { done: true, text: '공부하기' },
     ];
-    this.date = new Date().toLocaleString();
   }
 
   ngOnInit(): void {}
@@ -27,11 +24,7 @@ export class TodosComponent implements OnInit {
     todo.done = !todo.done;
   }
 
-  addTodo(newText: string) {
-    this.todos.push({
-      done: false,
-      text: newText,
-    });
-    this.newText = '';
+  addTodo(text: string) {
+    this.todos.push({ done: true, text });
   }
 }

@@ -1,12 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Todo } from '../../share/todo.model';
 
 @Component({
   selector: 'app-todo',
-  template: ` <div><input type="checkbox" /> 운동하기</div> `,
-  styles: [],
+  template: `
+    <input type="checkbox" [checked]="todo.done" />
+    <label>{{ todo.text }}</label>
+  `,
+  styleUrls: ['./todo.component.css'],
 })
 export class TodoComponent implements OnInit {
-  constructor() {}
+  @Input() todo: Todo;
+  constructor() {
+    this.todo = { done: false, text: '' };
+  }
 
   ngOnInit() {}
 }
